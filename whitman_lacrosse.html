@@ -169,6 +169,24 @@
       font-size: 0.9rem;
       margin-top: 0.5rem;
     }
+    .team-photo-container {
+      margin-bottom: 4rem;
+      position: relative;
+    }
+    .team-photo {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .photo-caption {
+      background: var(--carolina);
+      color: var(--black);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.05em;
+      padding: 0.75rem 1.5rem;
+      text-align: center;
+    }
 
     /* COACHES */
     .coaches-section {
@@ -266,27 +284,25 @@
     }
     .highlight-stat { font-size: 0.85rem; }
 
-    /* VALUE + COLLEGES COMBINED */
-    .value-section {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+    /* VALUE SECTION (FULL WIDTH) */
+    .value-section-full {
       margin-bottom: 4rem;
     }
-    .value-box {
+    .value-box-full {
       background: var(--black);
       color: var(--white);
       padding: 2.5rem;
     }
-    .value-box h2 {
+    .value-box-full h2 {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 2rem;
       margin-bottom: 1.5rem;
       color: var(--carolina);
+      text-align: center;
     }
-    .value-grid {
+    .value-grid-wide {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
     }
     .value-item { text-align: center; }
@@ -296,32 +312,50 @@
       color: var(--carolina);
     }
     .value-label { font-size: 0.85rem; opacity: 0.8; }
-
-    .colleges-box {
-      background: var(--gray-light);
-      padding: 2.5rem;
-    }
-    .colleges-box h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-    }
-    .college-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-    .college-tag {
-      background: var(--white);
-      border: 2px solid var(--carolina);
-      padding: 0.5rem 1rem;
-      font-weight: 600;
-      font-size: 0.85rem;
-    }
     .college-tag.featured {
       background: var(--carolina);
       color: var(--black);
       border-color: var(--carolina);
+    }
+
+    /* COLLEGES SECTION (STANDALONE) */
+    .colleges-section {
+      margin-bottom: 4rem;
+    }
+    .colleges-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .colleges-section .subhead {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+    .colleges-section .college-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .colleges-section .college-tag {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--white);
+      border: 2px solid var(--carolina);
+      padding: 0.75rem 1.25rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .colleges-section .college-tag.featured {
+      background: var(--carolina);
+      color: var(--black);
+      border-color: var(--carolina);
+    }
+    .college-logo {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      border-radius: 4px;
     }
 
     /* CULTURE */
@@ -383,21 +417,85 @@
       color: var(--gray);
       margin-bottom: 1.5rem;
     }
-    .schedule-placeholder {
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 0.75rem;
+    }
+    .game-card {
+      display: flex;
+      align-items: center;
+      padding: 1rem 1.25rem;
       background: var(--gray-light);
-      border: 2px solid var(--carolina);
-      padding: 3rem;
+      border-left: 4px solid var(--carolina);
+      gap: 1rem;
+    }
+    .game-card.away {
+      background: var(--black);
+      color: var(--white);
+      border-left-color: var(--gray);
+    }
+    .game-date {
       text-align: center;
+      min-width: 50px;
     }
-    .schedule-placeholder h3 {
+    .game-day {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
+      line-height: 1;
       color: var(--carolina);
-      margin-bottom: 0.5rem;
     }
-    .schedule-placeholder p {
-      color: var(--gray);
+    .game-card.away .game-day {
+      color: var(--carolina);
     }
+    .game-month {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.7;
+    }
+    .game-details {
+      flex: 1;
+    }
+    .game-opponent {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.15rem;
+    }
+    .game-info {
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+    .game-location {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.5rem;
+      background: var(--carolina);
+      color: var(--black);
+    }
+    .game-card.away .game-location {
+      background: var(--gray);
+      color: var(--white);
+    }
+    .schedule-legend {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+    }
+    .legend-dot.home { background: var(--carolina); }
+    .legend-dot.away { background: var(--gray); }
 
     /* FOOTER CTA */
     .footer-cta {
@@ -429,10 +527,14 @@
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
-      .value-section { grid-template-columns: 1fr; }
+      .value-grid-wide { grid-template-columns: 1fr 1fr; }
       .coaches-grid { grid-template-columns: 1fr; }
       .culture-grid { grid-template-columns: 1fr 1fr; }
       .stats-row { gap: 1.5rem; }
+      .colleges-section .college-tag { font-size: 0.8rem; padding: 0.5rem 0.75rem; }
+      .college-logo { width: 22px; height: 22px; }
+      .schedule-grid { grid-template-columns: 1fr; }
+      .game-card { padding: 0.75rem 1rem; }
     }
   </style>
 </head>
@@ -471,6 +573,42 @@
     <div class="photo-placeholder hero-photo">
       <p>Action Photo Placeholder</p>
     </div>
+
+    <!-- WHERE VIKINGS PLAY NEXT - KEY VALUE PROP -->
+    <section class="colleges-section" id="colleges">
+      <h2>Where Vikings Play Next</h2>
+      <p class="subhead">Our players compete at the highest levels of college lacrosse</p>
+      <div class="college-list">
+        <div class="college-tag featured">
+          <img src="https://logo.clearbit.com/harvard.edu" alt="Harvard" class="college-logo">
+          <span>Harvard University</span>
+        </div>
+        <div class="college-tag">
+          <img src="https://logo.clearbit.com/williams.edu" alt="Williams" class="college-logo">
+          <span>Williams College</span>
+        </div>
+        <div class="college-tag">
+          <img src="https://logo.clearbit.com/wlu.edu" alt="Washington and Lee" class="college-logo">
+          <span>Washington And Lee</span>
+        </div>
+        <div class="college-tag">
+          <img src="https://logo.clearbit.com/holycross.edu" alt="Holy Cross" class="college-logo">
+          <span>College Of The Holy Cross</span>
+        </div>
+        <div class="college-tag">
+          <img src="https://logo.clearbit.com/wooster.edu" alt="Wooster" class="college-logo">
+          <span>College Of Wooster</span>
+        </div>
+        <div class="college-tag">
+          <img src="https://logo.clearbit.com/rit.edu" alt="RIT" class="college-logo">
+          <span>Rochester Institute Of Technology</span>
+        </div>
+        <div class="college-tag">
+          <img src="https://logo.clearbit.com/stevenson.edu" alt="Stevenson" class="college-logo">
+          <span>Stevenson University</span>
+        </div>
+      </div>
+    </section>
 
     <!-- COACHES - FIRST SECTION -->
     <section class="coaches-section" id="coaches">
@@ -513,9 +651,10 @@
       </div>
     </section>
 
-    <!-- TEAM PHOTO PLACEHOLDER -->
-    <div class="photo-placeholder">
-      <p>Team Photo Placeholder</p>
+    <!-- 2025 COUNTY CHAMPIONS -->
+    <div class="team-photo-container">
+      <img src="county-champs.jpg" alt="2025 County Champions - Whitman Vikings Lacrosse" class="team-photo">
+      <div class="photo-caption">2025 Montgomery County Champions</div>
     </div>
 
     <!-- 2025 HIGHLIGHTS -->
@@ -534,8 +673,8 @@
           <div class="highlight-stat">57 Goals</div>
         </div>
         <div class="highlight-card">
-          <div class="highlight-role">All-County</div>
-          <div class="highlight-name">Sullivan</div>
+          <div class="highlight-role">LSM • All-County</div>
+          <div class="highlight-name">Tommy Sullivan</div>
           <div class="highlight-stat">First Team All-County</div>
         </div>
         <div class="highlight-card">
@@ -551,27 +690,15 @@
       </div>
     </section>
 
-    <!-- VALUE + COLLEGES -->
-    <section class="value-section" id="value">
-      <div class="value-box">
+    <!-- THE WHITMAN VALUE -->
+    <section class="value-section-full" id="value">
+      <div class="value-box-full">
         <h2>The Whitman Value</h2>
-        <div class="value-grid">
+        <div class="value-grid-wide">
           <div class="value-item"><div class="value-num">$0</div><div class="value-label">Tuition</div></div>
           <div class="value-item"><div class="value-num">5 Min</div><div class="value-label">From Home</div></div>
           <div class="value-item"><div class="value-num">#2</div><div class="value-label">Academics In MD</div></div>
           <div class="value-item"><div class="value-num">100%</div><div class="value-label">Local Community</div></div>
-        </div>
-      </div>
-      <div class="colleges-box">
-        <h2>Where Vikings Play Next</h2>
-        <div class="college-list">
-          <span class="college-tag featured">Harvard University</span>
-          <span class="college-tag">Williams College</span>
-          <span class="college-tag">Washington And Lee University</span>
-          <span class="college-tag">College Of The Holy Cross</span>
-          <span class="college-tag">College Of Wooster</span>
-          <span class="college-tag">Rochester Institute Of Technology</span>
-          <span class="college-tag">Stevenson University</span>
         </div>
       </div>
     </section>
@@ -621,9 +748,71 @@
     <section class="schedule-section" id="schedule">
       <h2>2026 Schedule</h2>
       <p class="subhead">Come watch the Vikings compete</p>
-      <div class="schedule-placeholder">
-        <h3>Schedule Coming Soon</h3>
-        <p>Check back for the full 2026 season schedule</p>
+      <div class="schedule-grid">
+        <div class="game-card">
+          <div class="game-date"><div class="game-day">22</div><div class="game-month">Mar</div></div>
+          <div class="game-details"><div class="game-opponent">Damascus</div><div class="game-info">Saturday • 12:00 PM</div></div>
+          <div class="game-location">Home</div>
+        </div>
+        <div class="game-card away">
+          <div class="game-date"><div class="game-day">24</div><div class="game-month">Mar</div></div>
+          <div class="game-details"><div class="game-opponent">Quince Orchard</div><div class="game-info">Monday • 7:15 PM</div></div>
+          <div class="game-location">Away</div>
+        </div>
+        <div class="game-card away">
+          <div class="game-date"><div class="game-day">26</div><div class="game-month">Mar</div></div>
+          <div class="game-details"><div class="game-opponent">Walter Johnson</div><div class="game-info">Wednesday • 7:15 PM</div></div>
+          <div class="game-location">Away</div>
+        </div>
+        <div class="game-card away">
+          <div class="game-date"><div class="game-day">31</div><div class="game-month">Mar</div></div>
+          <div class="game-details"><div class="game-opponent">Churchill</div><div class="game-info">Monday • 7:15 PM</div></div>
+          <div class="game-location">Away</div>
+        </div>
+        <div class="game-card">
+          <div class="game-date"><div class="game-day">02</div><div class="game-month">Apr</div></div>
+          <div class="game-details"><div class="game-opponent">BCC</div><div class="game-info">Wednesday • 7:15 PM</div></div>
+          <div class="game-location">Home</div>
+        </div>
+        <div class="game-card away">
+          <div class="game-date"><div class="game-day">04</div><div class="game-month">Apr</div></div>
+          <div class="game-details"><div class="game-opponent">Wheaton</div><div class="game-info">Friday • 7:15 PM</div></div>
+          <div class="game-location">Away</div>
+        </div>
+        <div class="game-card away">
+          <div class="game-date"><div class="game-day">07</div><div class="game-month">Apr</div></div>
+          <div class="game-details"><div class="game-opponent">Poolesville</div><div class="game-info">Monday • 7:15 PM</div></div>
+          <div class="game-location">Away</div>
+        </div>
+        <div class="game-card away">
+          <div class="game-date"><div class="game-day">11</div><div class="game-month">Apr</div></div>
+          <div class="game-details"><div class="game-opponent">Blake</div><div class="game-info">Friday • 7:15 PM</div></div>
+          <div class="game-location">Away</div>
+        </div>
+        <div class="game-card">
+          <div class="game-date"><div class="game-day">22</div><div class="game-month">Apr</div></div>
+          <div class="game-details"><div class="game-opponent">Watkins Mill</div><div class="game-info">Tuesday • 5:30 PM</div></div>
+          <div class="game-location">Home</div>
+        </div>
+        <div class="game-card away">
+          <div class="game-date"><div class="game-day">24</div><div class="game-month">Apr</div></div>
+          <div class="game-details"><div class="game-opponent">Springbrook</div><div class="game-info">Thursday • 7:15 PM</div></div>
+          <div class="game-location">Away</div>
+        </div>
+        <div class="game-card away">
+          <div class="game-date"><div class="game-day">26</div><div class="game-month">Apr</div></div>
+          <div class="game-details"><div class="game-opponent">Sherwood</div><div class="game-info">Saturday • 12:00 PM</div></div>
+          <div class="game-location">Away</div>
+        </div>
+        <div class="game-card away">
+          <div class="game-date"><div class="game-day">28</div><div class="game-month">Apr</div></div>
+          <div class="game-details"><div class="game-opponent">Blair</div><div class="game-info">Monday • 5:30 PM</div></div>
+          <div class="game-location">Away</div>
+        </div>
+      </div>
+      <div class="schedule-legend">
+        <div class="legend-item"><div class="legend-dot home"></div><span>Home</span></div>
+        <div class="legend-item"><div class="legend-dot away"></div><span>Away</span></div>
       </div>
     </section>
   </div>
