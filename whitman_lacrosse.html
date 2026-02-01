@@ -266,27 +266,25 @@
     }
     .highlight-stat { font-size: 0.85rem; }
 
-    /* VALUE + COLLEGES COMBINED */
-    .value-section {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+    /* VALUE SECTION (FULL WIDTH) */
+    .value-section-full {
       margin-bottom: 4rem;
     }
-    .value-box {
+    .value-box-full {
       background: var(--black);
       color: var(--white);
       padding: 2.5rem;
     }
-    .value-box h2 {
+    .value-box-full h2 {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 2rem;
       margin-bottom: 1.5rem;
       color: var(--carolina);
+      text-align: center;
     }
-    .value-grid {
+    .value-grid-wide {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
     }
     .value-item { text-align: center; }
@@ -296,32 +294,50 @@
       color: var(--carolina);
     }
     .value-label { font-size: 0.85rem; opacity: 0.8; }
-
-    .colleges-box {
-      background: var(--gray-light);
-      padding: 2.5rem;
-    }
-    .colleges-box h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-    }
-    .college-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-    .college-tag {
-      background: var(--white);
-      border: 2px solid var(--carolina);
-      padding: 0.5rem 1rem;
-      font-weight: 600;
-      font-size: 0.85rem;
-    }
     .college-tag.featured {
       background: var(--carolina);
       color: var(--black);
       border-color: var(--carolina);
+    }
+
+    /* COLLEGES SECTION (STANDALONE) */
+    .colleges-section {
+      margin-bottom: 4rem;
+    }
+    .colleges-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .colleges-section .subhead {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+    .colleges-section .college-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .colleges-section .college-tag {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--white);
+      border: 2px solid var(--carolina);
+      padding: 0.75rem 1.25rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .colleges-section .college-tag.featured {
+      background: var(--carolina);
+      color: var(--black);
+      border-color: var(--carolina);
+    }
+    .college-logo {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      border-radius: 4px;
     }
 
     /* CULTURE */
@@ -429,10 +445,12 @@
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
-      .value-section { grid-template-columns: 1fr; }
+      .value-grid-wide { grid-template-columns: 1fr 1fr; }
       .coaches-grid { grid-template-columns: 1fr; }
       .culture-grid { grid-template-columns: 1fr 1fr; }
       .stats-row { gap: 1.5rem; }
+      .colleges-section .college-tag { font-size: 0.8rem; padding: 0.5rem 0.75rem; }
+      .college-logo { width: 22px; height: 22px; }
     }
   </style>
 </head>
@@ -471,6 +489,42 @@
     <div class="photo-placeholder hero-photo">
       <p>Action Photo Placeholder</p>
     </div>
+
+    <!-- WHERE VIKINGS PLAY NEXT - KEY VALUE PROP -->
+    <section class="colleges-section" id="colleges">
+      <h2>Where Vikings Play Next</h2>
+      <p class="subhead">Our players compete at the highest levels of college lacrosse</p>
+      <div class="college-list">
+        <div class="college-tag featured">
+          <img src="https://logo.clearbit.com/harvard.edu" alt="Harvard" class="college-logo">
+          <span>Harvard University</span>
+        </div>
+        <div class="college-tag">
+          <img src="https://logo.clearbit.com/williams.edu" alt="Williams" class="college-logo">
+          <span>Williams College</span>
+        </div>
+        <div class="college-tag">
+          <img src="https://logo.clearbit.com/wlu.edu" alt="Washington and Lee" class="college-logo">
+          <span>Washington And Lee</span>
+        </div>
+        <div class="college-tag">
+          <img src="https://logo.clearbit.com/holycross.edu" alt="Holy Cross" class="college-logo">
+          <span>College Of The Holy Cross</span>
+        </div>
+        <div class="college-tag">
+          <img src="https://logo.clearbit.com/wooster.edu" alt="Wooster" class="college-logo">
+          <span>College Of Wooster</span>
+        </div>
+        <div class="college-tag">
+          <img src="https://logo.clearbit.com/rit.edu" alt="RIT" class="college-logo">
+          <span>Rochester Institute Of Technology</span>
+        </div>
+        <div class="college-tag">
+          <img src="https://logo.clearbit.com/stevenson.edu" alt="Stevenson" class="college-logo">
+          <span>Stevenson University</span>
+        </div>
+      </div>
+    </section>
 
     <!-- COACHES - FIRST SECTION -->
     <section class="coaches-section" id="coaches">
@@ -534,8 +588,8 @@
           <div class="highlight-stat">57 Goals</div>
         </div>
         <div class="highlight-card">
-          <div class="highlight-role">All-County</div>
-          <div class="highlight-name">Sullivan</div>
+          <div class="highlight-role">LSM • All-County</div>
+          <div class="highlight-name">Tommy Sullivan</div>
           <div class="highlight-stat">First Team All-County</div>
         </div>
         <div class="highlight-card">
@@ -551,27 +605,15 @@
       </div>
     </section>
 
-    <!-- VALUE + COLLEGES -->
-    <section class="value-section" id="value">
-      <div class="value-box">
+    <!-- THE WHITMAN VALUE -->
+    <section class="value-section-full" id="value">
+      <div class="value-box-full">
         <h2>The Whitman Value</h2>
-        <div class="value-grid">
+        <div class="value-grid-wide">
           <div class="value-item"><div class="value-num">$0</div><div class="value-label">Tuition</div></div>
           <div class="value-item"><div class="value-num">5 Min</div><div class="value-label">From Home</div></div>
           <div class="value-item"><div class="value-num">#2</div><div class="value-label">Academics In MD</div></div>
           <div class="value-item"><div class="value-num">100%</div><div class="value-label">Local Community</div></div>
-        </div>
-      </div>
-      <div class="colleges-box">
-        <h2>Where Vikings Play Next</h2>
-        <div class="college-list">
-          <span class="college-tag featured">Harvard University</span>
-          <span class="college-tag">Williams College</span>
-          <span class="college-tag">Washington And Lee University</span>
-          <span class="college-tag">College Of The Holy Cross</span>
-          <span class="college-tag">College Of Wooster</span>
-          <span class="college-tag">Rochester Institute Of Technology</span>
-          <span class="college-tag">Stevenson University</span>
         </div>
       </div>
     </section>
